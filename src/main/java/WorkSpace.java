@@ -26,6 +26,11 @@ public class WorkSpace {
         System.out.println("What do you want, churka?");
         System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
         String command = in.nextLine();
+        while(!command.equals("insert") && !command.equals("delete") && !command.equals("update") && !command.equals("show") && !command.equals("showBoth")) {
+            System.out.println("Please, enter the correct option, suchka");
+            command = in.nextLine();
+        }
+
 
         while (!command.equals("exit")){
 
