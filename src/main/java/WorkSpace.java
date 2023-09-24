@@ -26,7 +26,7 @@ public class WorkSpace {
         System.out.println("What do you want, churka?");
         System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
         String command = in.nextLine();
-        while(!command.equals("insert") && !command.equals("delete") && !command.equals("update") && !command.equals("show") && !command.equals("showBoth")) {
+        while(!command.equals("insert") && !command.equals("delete") && !command.equals("update") && !command.equals("show") && !command.equals("showBoth") && !command.equals("exit")) {
             System.out.println("Please, enter the correct option, suchka");
             command = in.nextLine();
         }
@@ -153,6 +153,10 @@ public class WorkSpace {
                 }
                 System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
                 command = in.nextLine();
+                while(!command.equals("insert") && !command.equals("delete") && !command.equals("update") && !command.equals("show") && !command.equals("showBoth") && !command.equals("exit")) {
+                    System.out.println("Please, enter the correct option, suchka");
+                    command = in.nextLine();
+                }
             }
 
 

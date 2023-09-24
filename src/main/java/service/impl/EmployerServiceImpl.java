@@ -27,7 +27,6 @@ public class EmployerServiceImpl implements EmployerService {
                 +idPersonEmployer + ","
                 + "'" +position + "'" +","
                 +"'"+departament +"'"+")";
-        System.out.println(str);
         connectorToDataBase.getStatement().executeUpdate(str);
     }
 

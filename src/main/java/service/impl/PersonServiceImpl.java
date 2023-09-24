@@ -27,7 +27,6 @@ public class PersonServiceImpl implements PersonService {
                 +name + "'" + ","
                 + "'" +surname + "'" +","
                 +"'"+Date.valueOf(date) +"'"+")";
-        System.out.println(str);
         connectorToDataBase.getStatement().executeUpdate(str);
     }
 
