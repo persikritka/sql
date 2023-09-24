@@ -37,4 +37,8 @@ public class Employer {
     public void setId_person(int id_person) {
         this.id_person = id_person;
     }
+
+    public String toString() {
+        return "id: " + id_employer + ", id_person: " + id_person + ", position: " + position + ", departament: " + departament + "\n";
+    }
 }

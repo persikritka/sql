@@ -1,4 +1,5 @@
 import database.ConnectorToDataBase;
+import employer.Employer;
 import service.EmployerService;
 import service.impl.EmployerServiceImpl;
 
@@ -44,8 +45,16 @@ public class WorkSpace {
                 if (command.equals("show")) {
                     ResultSet rs = service.getAllData();
                     while (rs.next()) {
-                        System.out.println("id:" + rs.getString(1) + "\nid_person:" + rs.getString(2) +
-                                "\nposition:" + rs.getString(3) + "\ndepartament:" + rs.getString(4));
+                        Employer employer = new Employer();
+                        employer.setId_person(rs.getInt(2));
+                        employer.setPosition(rs.getString(3));
+                        employer.setDepartament(rs.getString(4));
+                        employer.setId_employer(rs.getInt(1));
+                       // System.out.println(rs.getString(2));
+                       // System.out.println("id:" + rs.getString(1) + "\nid_person:" + rs.getString(2) +
+                             //   "\nposition:" + rs.getString(3) + "\ndepartament:" + rs.getString(4));
+                        System.out.println(employer.toString());
+                        //in.nextLine();
                     }
                 }
 
