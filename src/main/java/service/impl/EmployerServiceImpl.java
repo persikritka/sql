@@ -37,11 +37,7 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public void update(int idEmployer, int idPersonEmployer, String position, String departament) throws SQLException {
-        String q1 = "UPDATE employer set id_person = '" + idPersonEmployer + "' WHERE id = " + idEmployer;
+        String q1 = "UPDATE employer set id_person = '" + idPersonEmployer + "', position = '" + position + "', departament = '" + departament + "' WHERE id = " + idEmployer;
         connectorToDataBase.getStatement().executeUpdate(q1);
-        String q2 = "UPDATE employer set position = '" + position + "' WHERE id = " + idEmployer;
-        connectorToDataBase.getStatement().executeUpdate(q2);
-        String q3 = "UPDATE employer set departament = '" + departament + "' WHERE id = " + idEmployer;
-        connectorToDataBase.getStatement().executeUpdate(q3);
     }
 }

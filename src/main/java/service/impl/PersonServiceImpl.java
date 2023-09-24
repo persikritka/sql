@@ -37,11 +37,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void update(int idPerson, String name, String surname, Date date) throws SQLException {
-        String q1 = "UPDATE person set name = '" + name + "' WHERE id = " + idPerson;
+        String q1 = "UPDATE person set name = '" + name + "', surname = '" + surname + "', date_birtday = '" + date + "' WHERE id = " + idPerson;
         connectorToDataBase.getStatement().executeUpdate(q1);
-        String q2 = "UPDATE person set surname = '" + surname + "' WHERE id = " + idPerson;
-        connectorToDataBase.getStatement().executeUpdate(q2);
-        String q3 = "UPDATE person set date_birtday = '" + date + "' WHERE id = " + idPerson;
-        connectorToDataBase.getStatement().executeUpdate(q3);
     }
 }
