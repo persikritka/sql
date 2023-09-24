@@ -1,24 +1,23 @@
 import database.ConnectorToDataBase;
 import employer.Employer;
+import person.Person;
 import service.EmployerService;
+import service.PersonService;
 import service.impl.EmployerServiceImpl;
+import service.impl.PersonServiceImpl;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class WorkSpace {
     private EmployerService service;
-    private String position;
-    private String departament;
+    private PersonService personService;
     private int idPersonEmployer;
-    private int newIdPersonEmployer;
-    private int idEmployer;
-    private String newPosition;
-    private String newDepartament;
 
     public WorkSpace(){
-        service=new EmployerServiceImpl();
+        service=new EmployerServiceImpl(); personService = new PersonServiceImpl();
     }
     public void start() throws SQLException {
         Scanner in = new Scanner(System.in);
@@ -33,6 +32,61 @@ public class WorkSpace {
             System.out.println("1. Person");
             System.out.println("2. Employer");
             int numberOfTable = in.nextInt();
+
+            int newIdPersonEmployer;
+            String newDepartament;
+            int idEmployer;
+            String newPosition;
+            String departament;
+            String position;
+            if(numberOfTable == 1) {
+
+                if(command.equals("insert")) {
+                    System.out.println("Enter name:");
+                    in.nextLine();
+                    String name = in.nextLine();
+                    System.out.println("Enter surname:");
+                    String surname = in.nextLine();
+                    System.out.println("Enter date of birthday:");
+                    String date = in.nextLine();
+                    personService.insert(name, surname, date);
+                }
+
+                if (command.equals("show")) {
+                    ResultSet rs = personService.getAllDataPerson();
+                    while (rs.next()) {
+                        Person person = new Person();
+                        person.setId(rs.getInt(1));
+                        person.setName(rs.getString(2));
+                        person.setSurname(rs.getString(3));
+                        person.setDate(rs.getDate(4));
+                        System.out.println(person.toString());
+                    }
+                    in.nextLine();
+                }
+
+                if(command.equals("delete")) {
+                    System.out.println("Enter id: ");
+                    int id = in.nextInt();
+                    in.nextLine();
+                    personService.delete(id);
+                }
+
+                if(command.equals("update")) {
+                    System.out.println("Enter id: ");
+                    int idPerson = in.nextInt();
+                    System.out.println("Enter new name: ");
+                    in.nextLine();
+                    String newName = in.nextLine();
+                    System.out.println("Enter new surname: ");
+                    String newSurname = in.nextLine();
+                    System.out.println("Enter new date of birthday: ");
+                    Date newDate = Date.valueOf(in.nextLine());
+                    personService.update(idPerson, newName, newSurname, newDate);
+                }
+                System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
+                command = in.nextLine();
+            }
 
             if(numberOfTable == 2) {
 

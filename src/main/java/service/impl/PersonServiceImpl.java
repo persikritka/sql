@@ -15,18 +15,18 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public ResultSet getAllDataPerson() {
         try {
-            return connectorToDataBase.getStatement().executeQuery("select * from employer");
+            return connectorToDataBase.getStatement().executeQuery("select * from person");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void insert(String name, String surname, Date date) throws SQLException {
-        String str = "insert into person(name, surname, date_birthday) values("
-                +name + ","
+    public void insert(String name, String surname, String date) throws SQLException {
+        String str = "insert into person(name, surname, date_birtday) values("+"'"
+                +name + "'" + ","
                 + "'" +surname + "'" +","
-                +"'"+date +"'"+")";
+                +"'"+Date.valueOf(date) +"'"+")";
         System.out.println(str);
         connectorToDataBase.getStatement().executeUpdate(str);
     }
@@ -40,9 +40,9 @@ public class PersonServiceImpl implements PersonService {
     public void update(int idPerson, String name, String surname, Date date) throws SQLException {
         String q1 = "UPDATE person set name = '" + name + "' WHERE id = " + idPerson;
         connectorToDataBase.getStatement().executeUpdate(q1);
-        String q2 = "UPDATE person set position = '" + surname + "' WHERE id = " + idPerson;
+        String q2 = "UPDATE person set surname = '" + surname + "' WHERE id = " + idPerson;
         connectorToDataBase.getStatement().executeUpdate(q2);
-        String q3 = "UPDATE person set departament = '" + date + "' WHERE id = " + idPerson;
+        String q3 = "UPDATE person set date_birtday = '" + date + "' WHERE id = " + idPerson;
         connectorToDataBase.getStatement().executeUpdate(q3);
     }
 }
