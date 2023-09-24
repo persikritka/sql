@@ -11,7 +11,12 @@ public class WorkSpace {
     private EmployerService service;
     private String position;
     private String departament;
-    private int idPerson;
+    private int idPersonEmployer;
+    private int newIdPersonEmployer;
+    private int idEmployer;
+    private String newPosition;
+    private String newDepartament;
+
     public WorkSpace(){
         service=new EmployerServiceImpl();
     }
@@ -33,13 +38,13 @@ public class WorkSpace {
 
                 if(command.equals("insert")) {
                     System.out.println("Enter id_person:");
-                    idPerson = in.nextInt();
+                    idPersonEmployer = in.nextInt();
                     in.nextLine();
                     System.out.println("Enter position:");
                     position = in.nextLine();
                     System.out.println("Enter departament:");
                     departament = in.nextLine();
-                    service.insert(idPerson, position, departament);
+                    service.insert(idPersonEmployer, position, departament);
                 }
 
                 if (command.equals("show")) {
@@ -50,12 +55,9 @@ public class WorkSpace {
                         employer.setPosition(rs.getString(3));
                         employer.setDepartament(rs.getString(4));
                         employer.setId_employer(rs.getInt(1));
-                       // System.out.println(rs.getString(2));
-                       // System.out.println("id:" + rs.getString(1) + "\nid_person:" + rs.getString(2) +
-                             //   "\nposition:" + rs.getString(3) + "\ndepartament:" + rs.getString(4));
                         System.out.println(employer.toString());
-                        //in.nextLine();
                     }
+                    in.nextLine();
                 }
 
                 if(command.equals("delete")) {
@@ -63,6 +65,19 @@ public class WorkSpace {
                     int id = in.nextInt();
                     in.nextLine();
                     service.delete(id);
+                }
+
+                if(command.equals("update")) {
+                    System.out.println("Enter id: ");
+                    idEmployer = in.nextInt();
+                    System.out.println("Enter new id_person: ");
+                    newIdPersonEmployer = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Enter new position: ");
+                    newPosition = in.nextLine();
+                    System.out.println("Enter new departament: ");
+                    newDepartament = in.nextLine();
+                    service.update(idEmployer, newIdPersonEmployer, newPosition, newDepartament);
                 }
                 System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
                 command = in.nextLine();
