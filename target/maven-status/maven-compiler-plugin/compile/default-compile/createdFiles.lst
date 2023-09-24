@@ -1,3 +1,9 @@
-employer\Employer.class
+service\impl\PersonServiceImpl.class
 Main.class
+employer\Employer.class
+WorkSpace.class
+service\EmployerService.class
 person\Person.class
+database\ConnectorToDataBase.class
+service\impl\EmployerServiceImpl.class
+service\PersonService.class

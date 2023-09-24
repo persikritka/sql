@@ -127,10 +127,10 @@ public class WorkSpace {
                     ResultSet rs = service.getAllData();
                     while (rs.next()) {
                         Employer employer = new Employer();
-                        employer.setId_person(rs.getInt(2));
+                        employer.setIdPerson(rs.getInt(2));
                         employer.setPosition(rs.getString(3));
                         employer.setDepartament(rs.getString(4));
-                        employer.setId_employer(rs.getInt(1));
+                        employer.setIdEmployer(rs.getInt(1));
                         System.out.println(employer.toString());
                     }
                     in.nextLine();

@@ -1,8 +1,8 @@
 package employer;
 
 public class Employer {
-    private int id_employer;
-    protected int id_person;
+    private int idEmployer;
+    protected int idPerson;
     protected String position;
     protected String departament;
 
@@ -11,15 +11,15 @@ public class Employer {
     }
 
     public int getId_employer() {
-        return id_employer;
+        return idEmployer;
     }
 
-    public void setId_employer(int id_employer) {
-        this.id_employer = id_employer;
+    public void setIdEmployer(int idEmployer) {
+        this.idEmployer = idEmployer;
     }
 
     public int getId_person() {
-        return id_person;
+        return idPerson;
     }
 
     public String getDepartament() {
@@ -34,11 +34,11 @@ public class Employer {
         this.departament = departament;
     }
 
-    public void setId_person(int id_person) {
-        this.id_person = id_person;
+    public void setIdPerson(int idPerson) {
+        this.idPerson = idPerson;
     }
 
     public String toString() {
-        return "id: " + id_employer + ", id_person: " + id_person + ", position: " + position + ", departament: " + departament + "\n";
+        return "id: " + idEmployer + ", id_person: " + idPerson + ", position: " + position + ", departament: " + departament + "\n";
     }
 }
