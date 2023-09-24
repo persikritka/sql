@@ -10,7 +10,7 @@ public class Employer {
         this.position = position;
     }
 
-    public int getId_employer() {
+    public int getIdEmployer() {
         return idEmployer;
     }
 
@@ -18,7 +18,7 @@ public class Employer {
         this.idEmployer = idEmployer;
     }
 
-    public int getId_person() {
+    public int getIdPerson() {
         return idPerson;
     }
 
