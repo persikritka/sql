@@ -50,6 +50,10 @@ public class WorkSpace {
             System.out.println("1. Person");
             System.out.println("2. Employer");
             int numberOfTable = in.nextInt();
+            while(numberOfTable != 1 && numberOfTable != 2) {
+                System.out.println("Enter the correct option");
+                numberOfTable = in.nextInt();
+            }
 
             int newIdPersonEmployer;
             String newDepartament;
