@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class EmployerServiceImpl implements EmployerService {
-    private ConnectorToDataBase connectorToDataBase;
+    private final ConnectorToDataBase connectorToDataBase;
     public EmployerServiceImpl(){
         connectorToDataBase=new ConnectorToDataBase();
     }
@@ -22,9 +22,9 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
     @Override
-    public void insert(int id_person, String position, String departament) throws SQLException {
+    public void insert(int idPersonEmployer, String position, String departament) throws SQLException {
         String str = "insert into employer(id_person, position, departament) values("
-                +id_person + ","
+                +idPersonEmployer + ","
                 + "'" +position + "'" +","
                 +"'"+departament +"'"+")";
         System.out.println(str);
@@ -37,8 +37,8 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
     @Override
-    public void update(int idEmployer, int idPerson, String position, String departament) throws SQLException {
-        String q1 = "UPDATE employer set id_person = '" + idPerson + "' WHERE id = " + idEmployer;
+    public void update(int idEmployer, int idPersonEmployer, String position, String departament) throws SQLException {
+        String q1 = "UPDATE employer set id_person = '" + idPersonEmployer + "' WHERE id = " + idEmployer;
         connectorToDataBase.getStatement().executeUpdate(q1);
         String q2 = "UPDATE employer set position = '" + position + "' WHERE id = " + idEmployer;
         connectorToDataBase.getStatement().executeUpdate(q2);
