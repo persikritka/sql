@@ -15,9 +15,10 @@ public class WorkSpace {
     private EmployerService service;
     private PersonService personService;
     private int idPersonEmployer;
+    private ConnectorToDataBase connectorToDataBase;
 
     public WorkSpace(){
-        service=new EmployerServiceImpl(); personService = new PersonServiceImpl();
+        service=new EmployerServiceImpl(); personService = new PersonServiceImpl(); connectorToDataBase = new ConnectorToDataBase();
     }
     public void start() throws SQLException {
         Scanner in = new Scanner(System.in);
@@ -27,6 +28,18 @@ public class WorkSpace {
         String command = in.nextLine();
 
         while (!command.equals("exit")){
+
+            if(command.equals("showBoth")) {
+                ResultSet rs = connectorToDataBase.getStatement().executeQuery("select * from person join employer on employer.id_person=person.id");
+                while(rs.next()){
+                System.out.println("id: " + rs.getString(1) + ", name: " + rs.getString(2) +
+                        ", surname: " + rs.getString(3) + ", date of birthday: " + rs.getString(4) +
+                        ", id: " + rs.getString(5) + ", id_person: " + rs.getString(6) +
+                        ", position: " + rs.getString(7) + ", departament: " + rs.getString(8));
+                }
+                System.out.println("insert" + "\ndelete" + "\nupdate" + "\nshow" + "\nshowBoth" + "\nexit");
+                command = in.nextLine();
+            }
 
             System.out.println("Choose table:");
             System.out.println("1. Person");
